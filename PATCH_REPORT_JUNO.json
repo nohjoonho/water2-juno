@@ -1,0 +1,33 @@
+{
+  "version": "Edit by Juno",
+  "date": "2026-11-05",
+  "source_folder_preserved": "D:\\ChatGPT\\대항해시대2\\UW2_Convenience_Stability_Fix1\\UW2_Local_Autosupply",
+  "http_ports": "8785-8795",
+  "database_prefix": "UW2_Juno_local_",
+  "enhanced_versions": [
+    "corrected_auto",
+    "original_auto"
+  ],
+  "runtime_option_combinations": 32,
+  "machine_instruction_cases": 160,
+  "browser_checks": [
+    "corrected new game",
+    "luck 100",
+    "Lisbon commerce/industry 1000",
+    "audio 35 percent gain",
+    "mute and volume persistence",
+    "mobile layout"
+  ],
+  "limitations": [
+    "Not every tavern/inn name rendering path has been visually verified",
+    "No long voyage soak test"
+  ],
+  "files": {
+    "app.js": "6614095b73d282778e3162fb7768f9b4ddc66cc4a77078490f823b0b115130d9",
+    "enhancements.js": "e1913341eccfae8d2002090d5a929bfe438e72db13a5510e96fdbae11ec41c7c",
+    "index.html": "a78318c2d2fb360e38e27b443714494638fbe1fc8496903a341a1e6d166205c6",
+    "app.css": "dbcf30ac17e12737b1fefc8393394a01633285c14ef7fd17329ca6f374351dab",
+    "server.ps1": "66b58fc20964454eebb2d8ab5c0b221b8e11c137b2d4cf7fd719ba69c4ec091d"
+  },
+  "game_archives_unchanged": true
+}

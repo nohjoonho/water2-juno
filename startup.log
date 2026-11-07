@@ -1,0 +1,27 @@
+﻿**********************
+Windows PowerShell 기록 시작
+시작 시간: 20261105205822
+사용자 이름: DESKTOP-JUNO\Juno
+RunAs 사용자: DESKTOP-JUNO\Juno
+구성 이름: 
+Machine: DESKTOP-JUNO (Microsoft Windows NT 10.0.26300.0)
+호스트 응용 프로그램: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoLogo -NoProfile -NoExit -ExecutionPolicy Bypass -File D:\ChatGPT\대항해시대2\water2-juno\launcher.ps1
+프로세스 ID: 8428
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+PowerShell: 5.1.26100.9711
+Uncharted Waters II - Edit by Juno
+Folder: D:\ChatGPT\대항해시대2\water2-juno
+
+  Uncharted Waters II - Edit by Juno
+  DOSBox browser engine is included.
+
+  Open http://127.0.0.1:8785/
+  Keep this window open while you play. Press Ctrl+C to quit.

@@ -1,0 +1,3 @@
+water2_autosupply: 16 option combinations, runtime restore, luck/port guards passed
+mod_correction_v1.08_autosupply: 16 option combinations, runtime restore, luck/port guards passed
+112 supply/sea cases; 48 name rendering cases passed

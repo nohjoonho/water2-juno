@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>대항해시대 II | 로컬 웹 · 자동보급</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div id="shell">
+    <header class="header">
+      <div class="brand"><span class="brand-small">UNCHARTED WATERS II</span><strong>대항해시대 Ⅱ</strong><span class="brand-small">로컬 웹 · 편의 기능 수정판</span></div>
+      <div class="header-right"><span class="version">STABILITY FIX 1</span><span id="status" role="status">게임을 선택해 주세요</span></div>
+    </header>
+
+    <main id="selectScreen" class="select-screen">
+      <section class="welcome">
+        <h1>어떤 버전으로 항해할까요?</h1>
+        <p>기존 게임은 그대로 유지하고, <b>A키 물·식량 균등보급</b>을 추가한 버전을 선택할 수 있어요.</p>
+      </section>
+      <div class="recommendations">
+        <article class="pick"><div class="pick-label">추천 · 교정 + 자동보급</div><h2>버그·번역 교정판 <em>v1.08</em></h2><p>교정판의 변경 사항을 보존하면서 자동보급 코드를 별도로 삽입했습니다.</p><button data-game="corrected_auto" class="primary">교정판 자동보급 실행 <span>A</span></button></article>
+        <article class="pick"><div class="pick-label">원작 + 자동보급</div><h2>원작 <em>Auto Supply</em></h2><p>순정 게임과 정확히 일치하는 실행 파일에 검증된 자동보급 패치를 적용했습니다.</p><button data-game="original_auto" class="primary secondary">원작 자동보급 실행 <span>A</span></button></article>
+      </div>
+      <h2 class="subheading">기존 버전 (변경 없음)</h2>
+      <div class="other-games">
+        <button data-game="original">대항해시대2 원작</button>
+        <button data-game="corrected">버그·번역 교정판 v1.08</button>
+        <button data-game="ernst">에르네스트 모드 v1.11</button>
+        <button data-game="junghwa">정화편 v3.0</button>
+        <button data-game="eojeon1">밀란다편 1</button>
+        <button data-game="eojeon2">밀란다편 2</button>
+        <button data-game="eojeon3">살바도르편</button>
+      </div>
+      <div class="notice"><b>안내</b> · 패치판은 기존 원본과 별도의 저장 공간을 사용합니다. DOSBox 엔진 파일이 포함되어 있습니다. 수정판 버전은 상단의 STABILITY FIX 1 표시로 확인할 수 있습니다.</div>
+    </main>
+
+    <main id="gameScreen" class="game-screen hidden" aria-label="게임 화면">
+      <div class="play-area"><div class="canvas-wrap"><canvas id="canvas" width="640" height="480" tabindex="0"></canvas><div id="overlay" class="overlay"><div class="spinner"></div><span>게임을 준비하고 있습니다…</span></div></div></div>
+      <button id="showControlsBtn" class="tool show-controls">조작</button>
+      <div class="bottom-controls">
+      <div class="toolbar">
+        <button id="backBtn" class="tool">← 버전 선택</button><strong id="gameTitle" class="mode-title">대항해시대2</strong>
+        <div class="toolbar-spacer"></div>
+        <label class="blur-option"><input id="muteOnBlur" type="checkbox" checked> 다른 창으로 이동 시 음소거</label>
+        <button id="supplyBtn" class="tool supply-button">A 자동보급</button><button id="ammoSupplyBtn" class="tool supply-button">S 포탄+보급</button><button id="keyboardBtn" class="tool" aria-expanded="false">키패드</button><button id="optionsBtn" class="tool">편의 설정</button><button id="travelBtn" class="tool hidden">빠른 이동</button><button id="hideControlsBtn" class="tool">버튼 숨기기</button><button id="fullscreenBtn" class="tool">전체 화면</button>
+        <button id="downloadBtn" class="tool">세이브 내려받기</button>
+        <button id="uploadBtn" class="tool">세이브 불러오기</button>
+        <input id="uploadFile" type="file" accept=".DAT,.dat" hidden>
+      </div>
+        <div id="saveIndicator" class="save-indicator">게임 안에서 저장하세요</div>
+        <div id="touchKeyboard" class="touch-keyboard hidden" aria-label="화면 키패드"></div>
+      </div>
+    </main>
+    <dialog id="optionsDialog" aria-labelledby="optionsTitle">
+      <div class="options-heading"><h2 id="optionsTitle">편의 설정</h2><button id="closeOptionsBtn" class="tool" autofocus>닫기</button></div>
+      <div class="option-row"><div><label for="buildReduction">선박 건조 기간</label><p>변경 후 새로 주문하는 선박부터 적용됩니다.</p></div><select id="buildReduction"><option value="0">원래대로</option><option value="25">25% 단축</option><option value="50">50% 단축</option><option value="75">75% 단축</option><option value="100">100% 단축 · 건조일 0</option></select></div>
+      <div class="option-row"><div><label for="fastTravelEnabled">마을 내 빠른 이동</label><p>마을에서 Numpad 5 또는 아래 ‘빠른 이동’ 버튼.<br>현재 마을에 있는 시설 중에서 선택합니다.</p></div><input type="checkbox" id="fastTravelEnabled" aria-label="마을 내 빠른 이동 사용"></div>
+      <div class="option-row"><div><strong>소지금 추가</strong><p>누를 때마다 금화 환산 1,000,000 추가 · 최대 99,999,999.<br>게임에서는 금괴 100개로 표시될 수 있습니다.</p><p id="moneyStatus">현재 금화 확인 중…</p></div><button id="addMoneyBtn" class="tool money-button">+ 1,000,000</button></div>
+      <p id="optionsFeedback" role="status" aria-live="polite"></p>
+      <p class="options-note">설정은 자동으로 기억합니다. 추가한 돈을 보관하려면 게임 안에서 저장하세요. 게임 화면의 금액은 다음 화면 전환 때 갱신될 수 있습니다.</p>
+    </dialog>
+    <footer>웹 플레이 기반: wan2land/unchartedwaters2 · 균등보급 패치: 힘들고 님 · 개인 로컬용 수정판</footer>
+  </div>
+  <script src="enhancements.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

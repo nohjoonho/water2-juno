@@ -1,0 +1,32 @@
+{
+  "water2": {
+    "original_size": 288823,
+    "patched_size": 291474,
+    "injected_at": "0x470b0",
+    "injected_segment": "0x41cb",
+    "added_relocations": 10,
+    "key_hook": "0x19032",
+    "supply_hook": "0x2cc32",
+    "source_file": "water2.zip",
+    "patched_file": "water2_autosupply.zip",
+    "sha256_original": "1718bbbbcdd938dfe44403d9bd5254dfc02d431217dea39ae5fb3fcde1597747",
+    "sha256_patched": "036d6afc2f8f2cb13ade520cefffd992907a4c7cec90368aa59e82d0ce764c5d",
+    "total_files": 71,
+    "only_main_changed": true
+  },
+  "mod_correction_v1.08": {
+    "original_size": 288823,
+    "patched_size": 291474,
+    "injected_at": "0x470b0",
+    "injected_segment": "0x41cb",
+    "added_relocations": 10,
+    "key_hook": "0x19032",
+    "supply_hook": "0x2cc32",
+    "source_file": "mod_correction_v1.08.zip",
+    "patched_file": "mod_correction_v1.08_autosupply.zip",
+    "sha256_original": "4237a7590c32c3f6ff494432a9d3725b4a534df553d50c707ba18b3278f68e2e",
+    "sha256_patched": "58942ad9b578e83fcc29a18dfbfc12a33941dbf39bea9928b893d5437d8755de",
+    "total_files": 84,
+    "only_main_changed": true
+  }
+}

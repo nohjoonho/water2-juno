@@ -10,7 +10,8 @@
   const w16=(a,p,v)=>{a[p]=v&255;a[p+1]=(v>>>8)&255;};
   const size=a=>{w16(a,2,a.length%512);w16(a,4,Math.ceil(a.length/512));};
   const travelPayload=Uint8Array.from(atob('LscGIggAAJpOE3AfgD46DP90OC6APiAI/XUOLqAhCC6iIAjoigAwwMsugD4gCP50Gi6BPiIINUx0CS6BPiIIAEx1CC7GBiAI/jDAy5CQkJAugD4gCP50IHIJmua2tw+IRv7LU1FSVleaYAjLQV9eWllbsP+IRv7LmgAJy0GIRv4IwH4Ii/Q2xwQbucvLkJCQLqAgCDz+cwkuxgYgCP8w5MuaIV8AAMuQkJCQkJCQkJBQU1FSMOQuoCAIicPR4zDkioeMCInCMOSKh40IicFJgPsGdQFBkJCJ0IPoDHkCMcCD+Eh+A7hIAKNADCnCiRZEDInIg+gNeQIxwIP4SH4DuEgAo0IMKcFBiQ5GDLgEAJpqZQAAWllbWMMAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAw5M0WLqMiCArAdAMw5MuKxLQBywAAAAAAAAAAAAAAAC6APiAIA3UHLsYGIAj/y5rYtLcPy4te9scHwPrHRwLFw8ZHBAAx9jH/i4SMCD3//3QaCcB0FotC6IlD6In70euJ8NHoLoiHJAiDxwKDxgKD/hhy1Yn60erDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABVieWB7BgBU1FSVle4OgCNnuj+jVbomuxVmy3oV/+QkJC4MACQkJCNXujHBrqpAACaZg1wHzz/dBToRACQkJAuoiEILsYGIAj9MMDrCC7GBiAI/7D/X15aWVuJ7F3LkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkFMw5InDLoqHJAhbw5CQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkExGVFYyNQ=='),c=>c.charCodeAt(0));
-  const ammoPayload=Uint8Array.from(atob('LsYGAQAAVYnlg+wIUVZXix7ixjHAikcQg8AyuXgA9+G5ZAAx0vfxiUb+mgQutw+JRvzHRvoAAItG+jtG/HNvicPR4zHAiod0BYlG+JouWwAAicaLRviaTlsAAInDikcHmnBbAACJx4tG+JosXAAAi1UXKcJ2M4P6CnYDugoAideDPjwSAHUOoToSMdL3dv45x3YCiccJ/3QVifgBRAb3Zv4pBjoSGRY8Ev9G+uuJX15Ziexdww=='),c=>c.charCodeAt(0));
+  const ammoPayload=Uint8Array.from(atob('LsYGAQAAVYnlg+wIUVZXix7ixjHAikcQg8AyuXgA9+G5ZAAx0vfxiUb+mgQutw+JRvzHRvoAAItG+jtG/HM4icPR4zHAiod0BYlG+JouWwAAicaLRviaTlsAAInDikcHmnBbAACJx4tG+JosXAAA6I4G/0b668BfXlmJ7F3D'),c=>c.charCodeAt(0));
+  const ammoTargetHelper=hex('ba 0a 00 39 54 06 72 05 89 54 06 eb 71 8b 55 17 29 c2 72 6a 52 bf 0a 00 2b 7c 06 83 3e 3c 12 00 75 0e a1 3a 12 31 d2 f7 76 fe 39 c7 76 02 89 c7 5a 09 ff 74 49 39 fa 73 35 57 29 d7 8b 04 31 d2 b9 0a 00 f7 f1 39 f8 76 02 89 f8 29 c7 f7 e1 29 04 09 ff 74 14 8b 44 02 31 d2 f7 f1 39 f8 76 02 89 f8 29 c7 f7 e1 29 44 02 89 fa 5f 29 d7 89 f8 01 44 06 f7 66 fe 29 06 3a 12 19 16 3c 12 c3');
   const ammoKeys=Uint8Array.from(atob('LoA+AAAAdCg8QXQcPGF0GC6APgAAAXUYPFN0BDxzdRAuxgYBAALrBi7GBgEAAbAwiEb+yw=='),c=>c.charCodeAt(0));
   const marker=hex('4c 46 54 56 32 35');
   const buildOriginal=hex('b9 64 00 2b d2 f7 f1 88 47 23');
@@ -50,7 +51,7 @@
     validateMenu(menu);
     if(u16(input,8)*16!==HEADER||u16(input,14)!==STACK)throw Error('지원하지 않는 게임 실행 파일입니다.');
     if(!eq(input,0x19032,hex('9a 60 00 cb 41 90 90')))throw Error('A 자동보급 패치 연결을 확인하지 못했습니다.');
-    const a=new Uint8Array(Math.max(input.length,BASE+0x1100));a.set(input);
+    const a=new Uint8Array(Math.max(input.length,BASE+0x1300));a.set(input);
     if(!eq(a,0x9910,hex('ff 5e 06 ff 4e ee')))throw Error('이름 표시 코드가 지원 버전과 다릅니다.');
     a.set(hex('9a 00 0f cb 41 90'),0x9910);
     a.set(nameHook,BASE+0xf00);
@@ -70,7 +71,8 @@
     const build=hex('51 52 b9 64 00 f7 e1 b9 10 27 f7 f1 88 47 23 5a 59 cb');
     w16(build,3,100-options.buildReduction);a.set(build,BASE+0x440);
     a.set(hex('9a 40 04 cb 41 90 90 90 90 90'),0x30a72);
-    // Source S patch adds up to ten cannonballs. Then call the original A routine.
+    // S normalizes ammunition to ten, buying only the deficit and reclaiming
+    // supply space when necessary. Then call the original A routine.
     if(!eq(a,BASE+0x2f,hex('2e c6 06 01 00 00 e8 58 00')) ||
        !eq(a,BASE+0x60,hex('9a 81 3f b7 0f 2e 80 3e 00 00 00 74 10 3c 41 74 04 3c 61 75 08 2e c6 06 01 00 01 b0 30 88 46 fe cb')))
       throw Error('S 보급과 연결할 A 입력 코드가 일치하지 않습니다.');
@@ -78,8 +80,10 @@
     a.set(hex('e8 1f 00 90 90 90 90 90 90'),BASE+0x2f);
     const relay=new Uint8Array(15).fill(0x90);relay[0]=0xe9;w16(relay,1,0xd00-(0x51+3));a.set(relay,BASE+0x51);
     a.set(hex('9a 81 3f b7 0f e9 98 0b'),BASE+0x60);
+    for(let p=BASE+0x1200;p<BASE+0x1300;p++)if(a[p]!==0)throw Error('포탄 수량 조정 코드 공간이 사용 중입니다.');
     a.set(ammoPayload,BASE+0xb00);a.set(ammoKeys,BASE+0xc00);
-    a.set(hex('53 55 50 53 31 30'),BASE+0xc40);
+    a.set(ammoTargetHelper,BASE+0x1200);
+    a.set(hex('53 55 50 54 31 30'),BASE+0xc40);
     const dispatch=hex('2e fe 0e 01 00 75 04 e8 00 00 c3 e8 00 00 e8 00 00 c3');
     w16(dispatch,8,0x90-(0xd00+10));
     w16(dispatch,12,0xb00-(0xd00+14));
@@ -98,7 +102,7 @@
     // downward-growing stack. Day advancement can overwrite executable code.
     // Move the entire extension above the original stack and relocate both
     // its address operands and the MZ relocation-table locations.
-    const oldStart=STACK*16,newStart=CODE*16,length=0x1100;
+    const oldStart=STACK*16,newStart=CODE*16,length=0x1300;
     if(newStart<oldStart+u16(a,16))throw Error('패치 코드와 게임 스택이 겹칩니다.');
     const moved=new Uint8Array(HEADER+newStart+length);moved.set(a);
     moved.set(a.subarray(HEADER+oldStart,HEADER+oldStart+length),HEADER+newStart);

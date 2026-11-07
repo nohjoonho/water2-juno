@@ -1,12 +1,12 @@
 ﻿**********************
 Windows PowerShell 기록 시작
-시작 시간: 20261105205822
+시작 시간: 20261107213321
 사용자 이름: DESKTOP-JUNO\Juno
 RunAs 사용자: DESKTOP-JUNO\Juno
 구성 이름: 
 Machine: DESKTOP-JUNO (Microsoft Windows NT 10.0.26300.0)
 호스트 응용 프로그램: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoLogo -NoProfile -NoExit -ExecutionPolicy Bypass -File D:\ChatGPT\대항해시대2\water2-juno\launcher.ps1
-프로세스 ID: 8428
+프로세스 ID: 24360
 PSVersion: 5.1.26100.9711
 PSEdition: Desktop
 PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711

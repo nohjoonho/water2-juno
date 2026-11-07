@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>대항해시대 II | Edit by Juno</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div id="shell">
+    <header class="header">
+      <div class="brand"><span class="brand-small">UNCHARTED WATERS II</span><strong>대항해시대 Ⅱ</strong><span class="brand-small">자동보급 · 편의성 추가</span></div>
+      <div class="header-right"><span class="version">Edit by Juno</span><span id="status" role="status"></span></div>
+    </header>
+
+    <main id="selectScreen" class="select-screen">
+      <div class="recommendations">
+        <article class="pick"><div class="pick-label">자동보급 · 편의성 추가</div><h2>버그·번역 교정판 <em>v1.08</em></h2><p>버그·번역 교정판에 자동보급과 편의 기능을 추가했습니다.</p><button data-game="corrected_auto" class="primary">교정판 실행</button></article>
+        <article class="pick"><div class="pick-label">자동보급 · 편의성 추가</div><h2>대항해시대2 원작</h2><p>원작에 자동보급과 편의 기능을 추가했습니다.</p><button data-game="original_auto" class="primary secondary">원작 실행</button></article>
+      </div>
+      <h2 class="subheading">오리지널 버전 (패치 미적용)</h2>
+      <div class="other-games">
+        <button data-game="original">대항해시대2 원작</button>
+        <button data-game="corrected">버그·번역 교정판 v1.08</button>
+        <button data-game="ernst">에르네스트 모드 v1.11</button>
+        <button data-game="junghwa">정화편 v3.0</button>
+        <button data-game="eojeon1">밀란다편 1</button>
+        <button data-game="eojeon2">밀란다편 2</button>
+        <button data-game="eojeon3">살바도르편</button>
+      </div>
+      <div class="notice"><b>안내</b> · 패치판과 오리지널 버전은 각각 별도의 저장 공간을 사용합니다. 이전 수정판의 세이브는 ‘세이브 불러오기’로 옮길 수 있습니다.</div>
+      <section class="patch-notes" aria-label="패치 내용"><h2>패치 내용</h2><ul>
+        <li><b>A 자동보급</b> · 항구에서 함대의 물·식량을 균등 보급</li>
+        <li><b>S 포탄+보급</b> · 포탄을 배마다 최대 10 추가한 뒤 물·식량 보급 · 비용·적재 한도 적용</li>
+        <li><b>편의 설정</b> · 금화 1,000,000 추가, 건조 기간 단축, 마을 내 빠른 이동</li>
+        <li><b>선택 기능</b> · 희귀 장비 확률 제거, 해상 이벤트 제거, 물·식량 소비 고정, 강운, 현재 항구 상업·공업 1000</li>
+        <li><b>이름 강조</b> · 미고용 항해사 이름을 밝은 파란색으로 표시</li>
+        <li><b>음량 조절</b> · 편의 설정에서 0–100% 조절 · 모든 버전 지원</li>
+      </ul><p>게임 편의 패치는 위의 교정판·원작 2개 버전에 적용됩니다. 체크박스는 체크하면 편의 기능 적용, 해제하면 해당 기능 해제입니다.</p></section>
+    </main>
+
+    <main id="gameScreen" class="game-screen hidden" aria-label="게임 화면">
+      <div class="play-area"><div class="canvas-wrap"><canvas id="canvas" width="640" height="480" tabindex="0"></canvas><div id="overlay" class="overlay"><div class="spinner"></div><span>게임을 준비하고 있습니다…</span></div></div></div>
+      <button id="showControlsBtn" class="tool show-controls">조작</button>
+      <div class="bottom-controls">
+      <div class="toolbar">
+        <button id="backBtn" class="tool">← 버전 선택</button><strong id="gameTitle" class="mode-title">대항해시대2</strong>
+        <div class="toolbar-spacer"></div>
+        <label class="blur-option"><input id="muteOnBlur" type="checkbox" checked> 다른 창으로 이동 시 음소거</label>
+        <button id="supplyBtn" class="tool supply-button">A 자동보급</button><button id="ammoSupplyBtn" class="tool supply-button">S 포탄+보급</button><button id="keyboardBtn" class="tool" aria-expanded="false">키패드</button><button id="optionsBtn" class="tool">편의 설정</button><button id="travelBtn" class="tool hidden">빠른 이동</button><button id="hideControlsBtn" class="tool">버튼 숨기기</button><button id="fullscreenBtn" class="tool">전체 화면</button>
+        <button id="downloadBtn" class="tool">세이브 내려받기</button>
+        <button id="uploadBtn" class="tool">세이브 불러오기</button>
+        <input id="uploadFile" type="file" accept=".DAT,.dat" hidden>
+      </div>
+        <div id="saveIndicator" class="save-indicator">게임 안에서 저장하세요</div>
+        <div id="touchKeyboard" class="touch-keyboard hidden" aria-label="화면 키패드"></div>
+      </div>
+    </main>
+    <dialog id="optionsDialog" aria-labelledby="optionsTitle">
+      <div class="options-heading"><h2 id="optionsTitle">편의 설정</h2><button id="closeOptionsBtn" class="tool" autofocus>닫기</button></div>
+      <div class="option-row"><div><label for="buildReduction">선박 건조 기간</label><p>변경 후 새로 주문하는 선박부터 적용됩니다.</p></div><select id="buildReduction"><option value="0">원래대로</option><option value="25">25% 단축</option><option value="50">50% 단축</option><option value="75">75% 단축</option><option value="100">100% 단축 · 건조일 0</option></select></div>
+      <div class="option-row"><div><label for="fastTravelEnabled">마을 내 빠른 이동</label><p>마을에서 Numpad 5 또는 아래 ‘빠른 이동’ 버튼.<br>현재 마을에 있는 시설 중에서 선택합니다.</p></div><input type="checkbox" id="fastTravelEnabled" aria-label="마을 내 빠른 이동 사용"></div>
+      <div class="option-row"><div><label for="rareEquipmentEnabled">희귀 장비 확률 제거</label><p>카로네이드·천사/여신 선수상의 확률 판정을 제거합니다.<br>항구 발전도·조선공 능력 조건은 필요합니다. 조선소 메뉴를 다시 열면 반영됩니다.</p></div><input type="checkbox" id="rareEquipmentEnabled"></div>
+      <div class="option-row"><div><label for="disableSeaEventsEnabled">해상 이벤트 제거</label><p>체크하면 새 폭풍·무풍·안개, 쥐·전염병 및 특수 해상 이벤트를 막습니다.<br>이미 발생한 날씨는 자연 종료됩니다. 스토리·발견·함대 조우는 유지됩니다.</p></div><input type="checkbox" id="disableSeaEventsEnabled"></div>
+      <div class="option-row"><div><label for="freezeSuppliesEnabled">물·식량 소비 고정</label><p>현재 적재량에서 항해 중 물·식량 소비와 쥐에 의한 식량 감소를 막습니다.<br>보급·매매·적재량 조정은 그대로 사용할 수 있습니다.</p></div><input type="checkbox" id="freezeSuppliesEnabled"></div>
+      <div class="option-row"><div><label for="strongLuckEnabled">강운 · 주인공 행운 100</label><p>체크 중에는 주인공의 행운을 100으로 유지합니다.</p></div><input type="checkbox" id="strongLuckEnabled"></div>
+      <div class="option-row"><div><label for="maxPortEnabled">현재 항구 상업·공업 1000</label><p>체크 중 방문한 항구의 상업·공업 발전도를 1000으로 만듭니다.<br>항구에 들어온 뒤 적용되며, 다음 화면 전환 때 표시가 갱신됩니다.</p></div><input type="checkbox" id="maxPortEnabled"></div>
+      <div class="option-row"><div><label for="highlightNamesEnabled">미고용 항해사 이름 강조</label><p>주점·여관 등에서 미고용 항해사의 이름을 밝은 파란색으로 구분합니다.</p></div><input type="checkbox" id="highlightNamesEnabled"></div>
+      <div class="option-row"><div><strong>소지금 추가</strong><p>누를 때마다 금화 환산 1,000,000 추가 · 최대 99,999,999.<br>게임에서는 금괴 100개로 표시될 수 있습니다.</p><p id="moneyStatus">현재 금화 확인 중…</p></div><button id="addMoneyBtn" class="tool money-button">+ 1,000,000</button></div>
+      <div class="option-row sound-option"><div><label for="soundVolume">게임 음량</label><p>음악과 효과음을 함께 조절합니다. 0%는 음소거입니다.</p></div><div class="volume-control"><input id="soundVolume" type="range" min="0" max="100" step="1" value="100"><output id="soundVolumeValue" for="soundVolume">100%</output></div></div>
+      <p id="optionsFeedback" role="status" aria-live="polite"></p>
+      <p class="options-note">설정은 자동으로 기억합니다. 강운·항구 발전도·금화는 게임 데이터를 변경합니다. 체크 해제는 추가 적용을 멈추며 이미 바뀐 수치는 되돌리지 않습니다. 변경한 수치를 보관하려면 게임 안에서 저장하세요.</p>
+    </dialog>
+    <footer>웹 플레이 기반: wan2land/unchartedwaters2 · 균등보급 패치: 힘들고 님 · 개인 로컬용 수정판</footer>
+  </div>
+  <script src="enhancements.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -24,10 +24,19 @@
   ],
   "files": {
     "app.js": "6614095b73d282778e3162fb7768f9b4ddc66cc4a77078490f823b0b115130d9",
-    "enhancements.js": "e1913341eccfae8d2002090d5a929bfe438e72db13a5510e96fdbae11ec41c7c",
-    "index.html": "a78318c2d2fb360e38e27b443714494638fbe1fc8496903a341a1e6d166205c6",
+    "enhancements.js": "afa2043ba5586ee61192d3f0a13e65281cfb31d9afc4d5c23bd77d3124f70ca0",
+    "index.html": "6513fce517e1e0601fbd02e202d81834e948e116ce23ec0c63300296a22bd754",
     "app.css": "dbcf30ac17e12737b1fefc8393394a01633285c14ef7fd17329ca6f374351dab",
     "server.ps1": "66b58fc20964454eebb2d8ab5c0b221b8e11c137b2d4cf7fd719ba69c4ec091d"
   },
-  "game_archives_unchanged": true
+  "game_archives_unchanged": true,
+  "last_update": "2026-11-07",
+  "supply_S": {
+    "ammo_target": 10,
+    "buy_only_deficit": true,
+    "unload_excess_no_refund": true,
+    "reclaim_supplies_before_purchase": true,
+    "preserve_budget_and_capacity": true,
+    "full_native_execution_cases": 170
+  }
 }
